@@ -1,7 +1,7 @@
 # Maintainer: Chaiwat Suttipongsakul <cwt@bashell.com>
 pkgname="th1520-npu"
 pkgver=r2.492b7e6
-pkgrel=1
+pkgrel=2
 pkgdesc="TH1520 NPU for Arch Linux"
 arch=('riscv64')
 url="https://github.com/revyos/th1520-npu"
@@ -10,9 +10,11 @@ depends=('linux-cwt-510-thead-lpi4a')
 makedepends=('git')
 options=('!strip')
 source=("git+https://github.com/revyos/th1520-npu.git"
-        "91-npu.rules")
+        "91-npu.rules"
+	"vha.conf")
 md5sums=('SKIP'
-         '2300bcb6f6606212ba3394b14396ab66')
+         '2300bcb6f6606212ba3394b14396ab66'
+         '2c0f83de4128beba7f9ae593be171eb1')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -21,6 +23,8 @@ pkgver() {
 
 package() {
   cd "$srcdir"
+  install -Dm644 vha.conf \
+    "${pkgdir}/etc/modprobe.d/vha.conf"
   install -Dm644 91-npu.rules \
     "${pkgdir}/usr/lib/udev/rules.d/91-npu.rules"
 
