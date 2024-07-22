@@ -1,0 +1,1 @@
+KERNEL=="vha0", OWNER="root", GROUP="root", MODE="0666"
