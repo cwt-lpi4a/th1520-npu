@@ -1,7 +1,7 @@
 # Maintainer: Chaiwat Suttipongsakul <cwt@bashell.com>
 pkgname="th1520-npu"
 pkgver=r2.492b7e6
-pkgrel=2
+pkgrel=3
 pkgdesc="TH1520 NPU for Arch Linux"
 arch=('riscv64')
 url="https://github.com/revyos/th1520-npu"
@@ -11,10 +11,12 @@ makedepends=('git')
 options=('!strip')
 source=("git+https://github.com/revyos/th1520-npu.git"
         "91-npu.rules"
-	"vha.conf")
-md5sums=('SKIP'
-         '2300bcb6f6606212ba3394b14396ab66'
-         '2c0f83de4128beba7f9ae593be171eb1')
+	"modprobe.d-vha.conf"
+	"mkinitcpio.conf.d-vha.conf")
+sha256sums=('SKIP'
+            'c98deda3626442728b54502ebbfae04e3d812625e3ddb92a3599f15a5533bc84'
+            'ec7d665e015aab577452fa53b1ad5131c75558f7531ecb75a127fd3f4fe49919'
+            '87e2a6a162965e1c088b01ba8e249e2067333f3014cf1a669a3038bfbd257361')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -23,8 +25,10 @@ pkgver() {
 
 package() {
   cd "$srcdir"
-  install -Dm644 vha.conf \
+  install -Dm644 modprobe.d-vha.conf \
     "${pkgdir}/etc/modprobe.d/vha.conf"
+  install -Dm644 mkinitcpio.conf.d-vha.conf \
+    "${pkgdir}/etc/mkinitcpio.conf.d/vha.conf"
   install -Dm644 91-npu.rules \
     "${pkgdir}/usr/lib/udev/rules.d/91-npu.rules"
 
