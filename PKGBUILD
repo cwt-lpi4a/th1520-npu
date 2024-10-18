@@ -1,7 +1,7 @@
 # Maintainer: Chaiwat Suttipongsakul <cwt@bashell.com>
 pkgname="th1520-npu"
-pkgver=r2.492b7e6
-pkgrel=3
+pkgver=r3.3c351ad
+pkgrel=1
 pkgdesc="TH1520 NPU for Arch Linux"
 arch=('riscv64')
 url="https://github.com/revyos/th1520-npu"
