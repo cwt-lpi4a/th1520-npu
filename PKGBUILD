@@ -1,12 +1,12 @@
 # Maintainer: Chaiwat Suttipongsakul <cwt@bashell.com>
 pkgname="th1520-npu"
 pkgver=r3.3c351ad
-pkgrel=1
+pkgrel=2
 pkgdesc="TH1520 NPU for Arch Linux"
 arch=('riscv64')
 url="https://github.com/revyos/th1520-npu"
 license=('proprietary')
-depends=('linux-cwt-510-thead-lpi4a')
+depends=('linux')
 makedepends=('git')
 options=('!strip')
 source=("git+https://github.com/revyos/th1520-npu.git"
